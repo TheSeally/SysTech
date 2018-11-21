@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Case</title>
+    <link rel="stylesheet" type="text/css" href="css\main.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="root">
+    </div>
+<script src="./js/nunjancs.min.js"></script>    
+<script id="template" type="text/x-nunjucks-template">
+    {% for docDate, docRows in modify %} 
+        <div class="doc shadow">
+            <div class="doc-header" onclick="hideElem(this)"> 
+                <span class="doc-date">{{ docDate }}<a name="{{ docDate }}"></a></span>
+                <span class="doc-quantity">Документов: {{ docRows.count }} ({{ docRows.documentPrice.toLocaleString("ru", {minimumFractionDigits: 2}) }} &#8381)</span>
+            </div>
+            {% for rowAttr, rowValue in docRows %}
+                <div class="row-wrapper">
+                <div class="row-header"> 
+                    <span> {{rowValue.type}} №{{rowAttr}} </span>
+                    <span> {{ rowValue.groupPrice.toLocaleString("ru", {minimumFractionDigits: 2})}} &#8381 </span>
+                </div>
+                <div class="row-count">
+                    <div class="header" onclick="hideElem(this)">Товаров: {{rowValue.count}}</div>
+                    {% for value in rowValue.items %}
+                        <div class="product">
+                            <img src="{{ value.src }}" onerror="noImage(this)">
+                            <div class="product-info">
+                                <div class="product-name">{{ value.name }}</div>
+                                <div class="product-price">
+                                    <div> {{ value.quant }} штук x {{ value.price.toLocaleString("ru") }} &#8381</div>
+                                    <div> {{ value.price.toLocaleString("ru") }} &#8381</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                </div>
+                <div class="divider"></div>
+            {% endfor %}
+        </div>
+    {% endfor %}   
+</script>
+<script src="./js/main.js"></script>
+</body>
+</html>
