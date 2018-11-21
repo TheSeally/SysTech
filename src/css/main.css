@@ -235,29 +235,6 @@ body
     margin-right: 4%;
 }
 
-
-
-
-
-.button-helper
-{
-    position: fixed;
-    right: 2%;
-    bottom: 5%;
-
-    display: none;
-
-    width: 4rem;
-    height: 4rem;
-
-    border-radius: 50%;
-    background-color: #008080;
-    background-image: url('../imgs/calendar.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 50%;
-}
-
 /* Медиа выражения */
 @media (min-width: 1025px) and (max-width: 1280px)
 {
